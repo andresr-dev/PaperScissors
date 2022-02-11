@@ -18,7 +18,7 @@ class ContentModel: ObservableObject {
     @Published var correctAnswer = Option.paper
     @Published var showResult = false
     @Published var showGameFinished = false
-    @Published var milliseconds = 5000.0
+    @Published var milliseconds = 3000.0
     @Published var shuffling = false
     var timer: Timer?
     
@@ -55,7 +55,7 @@ class ContentModel: ObservableObject {
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 self.shuffleAllOptions()
-                self.milliseconds = 5000
+                self.milliseconds = 3000
                 withAnimation(.easeInOut) {
                     self.userSelection = nil
                 }
@@ -72,7 +72,7 @@ class ContentModel: ObservableObject {
                 self.computerSelection = self.allOptions.randomElement() ?? .paper
                 if i == 9 {
                     self.shuffling = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.fireTimer()
                     }
                 }
@@ -105,7 +105,7 @@ class ContentModel: ObservableObject {
     func resetGame() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.score = 0
-            self.milliseconds = 5000
+            self.milliseconds = 3000
             self.shuffleAllOptions()
             withAnimation(.easeInOut(duration: 0.5)) {
                 self.numberOfAttempts = 10
