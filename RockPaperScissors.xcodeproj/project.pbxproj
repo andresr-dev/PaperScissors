@@ -11,14 +11,28 @@
 		8157DEAF27B458A500652B59 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157DEAE27B458A500652B59 /* ContentView.swift */; };
 		8157DEB127B458A600652B59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8157DEB027B458A600652B59 /* Assets.xcassets */; };
 		8157DEB427B458A600652B59 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8157DEB327B458A600652B59 /* Preview Assets.xcassets */; };
+		8157DEBF27B4654200652B59 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157DEBE27B4654200652B59 /* Image.swift */; };
+		8157DEC127B5918500652B59 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157DEC027B5918500652B59 /* Color.swift */; };
+		8157DEC327B5B32C00652B59 /* ResultMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157DEC227B5B32C00652B59 /* ResultMessageView.swift */; };
+		8157DEC727B5C81A00652B59 /* Enums&Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8157DEC627B5C81A00652B59 /* Enums&Structs.swift */; };
+		816D77DD27B6BAF300E22E65 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816D77DC27B6BAF300E22E65 /* ContentModel.swift */; };
+		816D77DF27B6E18700E22E65 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 816D77DE27B6E18700E22E65 /* Double.swift */; };
+		816D77E327B7037300E22E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 816D77E227B7037300E22E65 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8157DEA927B458A500652B59 /* RockPaperScissors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaperScissors.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8157DEA927B458A500652B59 /* RockPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RockPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8157DEAC27B458A500652B59 /* RockPaperScissorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RockPaperScissorsApp.swift; sourceTree = "<group>"; };
 		8157DEAE27B458A500652B59 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8157DEB027B458A600652B59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8157DEB327B458A600652B59 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8157DEBE27B4654200652B59 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		8157DEC027B5918500652B59 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8157DEC227B5B32C00652B59 /* ResultMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMessageView.swift; sourceTree = "<group>"; };
+		8157DEC627B5C81A00652B59 /* Enums&Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enums&Structs.swift"; sourceTree = "<group>"; };
+		816D77DC27B6BAF300E22E65 /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
+		816D77DE27B6E18700E22E65 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		816D77E227B7037300E22E65 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +57,7 @@
 		8157DEAA27B458A500652B59 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8157DEA927B458A500652B59 /* RockPaperScissors.app */,
+				8157DEA927B458A500652B59 /* RockPaper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,7 +66,11 @@
 			isa = PBXGroup;
 			children = (
 				8157DEAC27B458A500652B59 /* RockPaperScissorsApp.swift */,
-				8157DEAE27B458A500652B59 /* ContentView.swift */,
+				8157DEBA27B463C700652B59 /* Helpers */,
+				8157DEBD27B4653300652B59 /* Extensions */,
+				816D77DB27B6BAAB00E22E65 /* ViewModels */,
+				816D77DA27B6BA7D00E22E65 /* Views */,
+				816D77E227B7037300E22E65 /* LaunchScreen.storyboard */,
 				8157DEB027B458A600652B59 /* Assets.xcassets */,
 				8157DEB227B458A600652B59 /* Preview Content */,
 			);
@@ -65,6 +83,41 @@
 				8157DEB327B458A600652B59 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8157DEBA27B463C700652B59 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8157DEC627B5C81A00652B59 /* Enums&Structs.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8157DEBD27B4653300652B59 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8157DEBE27B4654200652B59 /* Image.swift */,
+				8157DEC027B5918500652B59 /* Color.swift */,
+				816D77DE27B6E18700E22E65 /* Double.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		816D77DA27B6BA7D00E22E65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8157DEAE27B458A500652B59 /* ContentView.swift */,
+				8157DEC227B5B32C00652B59 /* ResultMessageView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		816D77DB27B6BAAB00E22E65 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				816D77DC27B6BAF300E22E65 /* ContentModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,7 +137,7 @@
 			);
 			name = RockPaperScissors;
 			productName = RockPaperScissors;
-			productReference = 8157DEA927B458A500652B59 /* RockPaperScissors.app */;
+			productReference = 8157DEA927B458A500652B59 /* RockPaper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -125,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816D77E327B7037300E22E65 /* LaunchScreen.storyboard in Resources */,
 				8157DEB427B458A600652B59 /* Preview Assets.xcassets in Resources */,
 				8157DEB127B458A600652B59 /* Assets.xcassets in Resources */,
 			);
@@ -137,7 +191,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8157DEC727B5C81A00652B59 /* Enums&Structs.swift in Sources */,
+				816D77DD27B6BAF300E22E65 /* ContentModel.swift in Sources */,
+				816D77DF27B6E18700E22E65 /* Double.swift in Sources */,
+				8157DEC327B5B32C00652B59 /* ResultMessageView.swift in Sources */,
 				8157DEAF27B458A500652B59 /* ContentView.swift in Sources */,
+				8157DEBF27B4654200652B59 /* Image.swift in Sources */,
+				8157DEC127B5918500652B59 /* Color.swift in Sources */,
 				8157DEAD27B458A500652B59 /* RockPaperScissorsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,18 +335,21 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andresraigoza.RockPaperScissors;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RockPaper;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -304,18 +367,21 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andresraigoza.RockPaperScissors;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RockPaper;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
