@@ -58,7 +58,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            //.preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
 
@@ -164,7 +164,7 @@ extension ContentView {
                         }
                 }
                 .tint(.primary)
-                .disabled(vm.showResult || vm.shuffling)
+                .disabled(vm.showResult || vm.shuffling || vm.milliseconds == 0)
             }
         }
         .padding(.bottom)

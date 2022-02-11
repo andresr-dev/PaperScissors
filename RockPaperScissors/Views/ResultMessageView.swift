@@ -44,8 +44,8 @@ extension ResultMessageView {
     
     private var background: some View {
         RoundedRectangle(cornerRadius: 25)
-            .fill(Color.Theme.background)
-            .shadow(color: .primary.opacity(0.3), radius: 5, x: 0, y: 0)
+            .fill(.thickMaterial)
+            //.shadow(color: .primary.opacity(0.3), radius: 5, x: 0, y: 0)
     }
     
     private var label: some View {

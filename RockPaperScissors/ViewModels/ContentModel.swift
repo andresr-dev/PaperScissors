@@ -24,9 +24,6 @@ class ContentModel: ObservableObject {
     
     func submittAnswer(optionSelected: Option?) {
         timer?.invalidate()
-        withAnimation(.easeInOut) {
-            numberOfAttempts -= 1
-        }
         withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
             userSelection = optionSelected
         }
@@ -41,6 +38,11 @@ class ContentModel: ObservableObject {
             withAnimation(.easeInOut) {
                 self.showResult = true
             }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(.easeInOut) {
+                    self.numberOfAttempts -= 1
+                }
+            }
         }
     }
     
@@ -54,10 +56,12 @@ class ContentModel: ObservableObject {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.shuffleAllOptions()
-                self.milliseconds = 3000
                 withAnimation(.easeInOut) {
                     self.userSelection = nil
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                    self.shuffleAllOptions()
+                    self.milliseconds = 3000
                 }
             }
         }
@@ -103,15 +107,19 @@ class ContentModel: ObservableObject {
     }
     
     func resetGame() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.score = 0
-            self.milliseconds = 3000
-            self.shuffleAllOptions()
-            withAnimation(.easeInOut(duration: 0.5)) {
-                self.numberOfAttempts = 10
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             withAnimation(.easeInOut) {
                 self.userSelection = nil
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                self.score = 0
+                self.milliseconds = 3000
+                withAnimation(.easeInOut(duration: 0.5)) {
+                    self.numberOfAttempts = 10
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.shuffleAllOptions()
+                }
             }
         }
     }
