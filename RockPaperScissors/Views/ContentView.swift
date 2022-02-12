@@ -32,10 +32,7 @@ struct ContentView: View {
             if vm.showResult {
                 ResultMessageView(vm: vm)
                     .zIndex(1)
-                    .transition(.asymmetric(
-                        insertion: .move(edge: .bottom),
-                        removal: .move(edge: .bottom))
-                    )
+                    .transition(.move(edge: .bottom))
             }
             if vm.showStartGame {
                 StartGameView(vm: vm)

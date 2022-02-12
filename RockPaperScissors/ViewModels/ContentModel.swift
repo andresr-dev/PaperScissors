@@ -25,7 +25,9 @@ class ContentModel: ObservableObject {
     
     func submittAnswer(optionSelected: Option?) {
         timer?.invalidate()
-        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0.5)) {
+        // response is the duration in this animation
+        // dampingFraction if 1.0 it doesn't do the bounce
+        withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1.0)) {
             userSelection = optionSelected
         }
         correctAnswer = shouldPlayToWin ?
@@ -35,15 +37,9 @@ class ContentModel: ObservableObject {
         if optionSelected == correctAnswer {
             score += 1
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            withAnimation(.easeInOut) {
-                self.showResult = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                withAnimation(.easeInOut) {
-                    self.numberOfAttempts -= 1
-                }
-            }
+        withAnimation(.easeInOut.delay(0.4)) {
+            self.showResult = true
+            self.numberOfAttempts -= 1
         }
     }
     
@@ -57,7 +53,7 @@ class ContentModel: ObservableObject {
             }
         } else {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                withAnimation(.easeInOut) {
+                withAnimation(.easeOut) {
                     self.userSelection = nil
                 }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
@@ -69,7 +65,7 @@ class ContentModel: ObservableObject {
     }
     
     func startGameButtonPressed() {
-        withAnimation(.easeInOut) {
+        withAnimation(.easeOut) {
             showStartGame = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
@@ -117,21 +113,17 @@ class ContentModel: ObservableObject {
     }
     
     func resetGame() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            withAnimation(.easeInOut) {
-                self.userSelection = nil
+        withAnimation(.easeOut.delay(0.2)) {
+            self.userSelection = nil
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+            self.score = 0
+            self.milliseconds = 3000
+            withAnimation(.easeInOut(duration: 0.5)) {
+                self.numberOfAttempts = 10
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.score = 0
-                self.milliseconds = 3000
-                withAnimation(.easeInOut(duration: 0.5)) {
-                    self.numberOfAttempts = 10
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                    withAnimation(.easeInOut) {
-                        self.showStartGame = true
-                    }
-                }
+            withAnimation(.easeIn.delay(0.6)) {
+                self.showStartGame = true
             }
         }
     }
