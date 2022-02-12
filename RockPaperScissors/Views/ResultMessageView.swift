@@ -36,7 +36,7 @@ struct ResultMessageView: View {
 struct ResultMessage_Previews: PreviewProvider {
     static var previews: some View {
         ResultMessageView(vm: ContentModel())
-            //.preferredColorScheme(.dark)
+            .preferredColorScheme(.dark)
     }
 }
 
@@ -45,7 +45,6 @@ extension ResultMessageView {
     private var background: some View {
         RoundedRectangle(cornerRadius: 25)
             .fill(.thickMaterial)
-            //.shadow(color: .primary.opacity(0.3), radius: 5, x: 0, y: 0)
     }
     
     private var label: some View {
@@ -84,42 +83,18 @@ extension ResultMessageView {
                 .font(.headline)
         }
     }
-    private var info: some View {
-        HStack {
-            Text("Correct Answer:")
-                .font(.callout)
-                .foregroundColor(.secondary)
-            
-            Text(vm.correctAnswer.rawValue.capitalized)
-                .font(.headline)
-            
-            Text("/")
-                .font(.callout)
-                .foregroundColor(.secondary)
-            
-            Text("Score:")
-                .font(.callout)
-                .foregroundColor(.secondary)
-            
-            Text(vm.score, format: .number)
-                .font(.headline)
-        }
-    }
     private var button: some View {
         Button {
             vm.continueButtonPressed()
         } label: {
             Text(vm.numberOfAttempts > 0 ?
                  "Continue" : "Finish")
-                .font(.headline)
-                .padding()
-                .frame(maxWidth: .infinity)
-                .foregroundColor(.white)
-                .background(
-                    userAnsweredRight ?
-                    Color.Theme.green : Color.Theme.red
+                .asCapsuleButton(
+                    color: userAnsweredRight ?
+                    Color.Theme.green : Color.Theme.red,
+                    height: 15
                 )
-                .clipShape(Capsule())
+                .animation(.none, value: vm.numberOfAttempts)
         }
     }
 }

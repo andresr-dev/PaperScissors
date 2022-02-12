@@ -20,6 +20,7 @@ class ContentModel: ObservableObject {
     @Published var showGameFinished = false
     @Published var milliseconds = 3000.0
     @Published var shuffling = false
+    @Published var showStartGame = false
     var timer: Timer?
     
     func submittAnswer(optionSelected: Option?) {
@@ -38,7 +39,7 @@ class ContentModel: ObservableObject {
             withAnimation(.easeInOut) {
                 self.showResult = true
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 withAnimation(.easeInOut) {
                     self.numberOfAttempts -= 1
                 }
@@ -67,8 +68,17 @@ class ContentModel: ObservableObject {
         }
     }
     
+    func startGameButtonPressed() {
+        withAnimation(.easeInOut) {
+            showStartGame = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+            self.shuffleAllOptions()
+        }
+    }
+    
     func shuffleAllOptions() {
-        shouldPlayToWin = Bool.random()
+        shouldPlayToWin.toggle()
         shuffling = true
         for i in 0..<10 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)/10) {
@@ -117,8 +127,10 @@ class ContentModel: ObservableObject {
                 withAnimation(.easeInOut(duration: 0.5)) {
                     self.numberOfAttempts = 10
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    self.shuffleAllOptions()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                    withAnimation(.easeInOut) {
+                        self.showStartGame = true
+                    }
                 }
             }
         }

@@ -37,10 +37,18 @@ struct ContentView: View {
                         removal: .move(edge: .bottom))
                     )
             }
+            if vm.showStartGame {
+                StartGameView(vm: vm)
+                    .zIndex(1)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .leading))
+                    )
+            }
         }
         .edgesIgnoringSafeArea(.bottom)
         .onAppear {
-            vm.shuffleAllOptions()
+            vm.showStartGame = true
         }
         .onChange(of: vm.milliseconds) { newValue in
             if newValue == 0 {
