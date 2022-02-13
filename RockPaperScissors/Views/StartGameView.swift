@@ -13,17 +13,18 @@ struct StartGameView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(Color.black.opacity(0.5))
+                .fill(.thinMaterial)
                 .ignoresSafeArea()
             
             ZStack {
                 RoundedRectangle(cornerRadius: 25)
-                    .fill(.thickMaterial)
+                    .fill(.black)
                 
                 VStack {
                     Text("Rock, Paper and Scissors")
                         .font(.title2)
                         .fontWeight(.medium)
+                        .foregroundColor(.white)
                         .minimumScaleFactor(0.7)
                     
                     Image(Option.scissors.rawValue)

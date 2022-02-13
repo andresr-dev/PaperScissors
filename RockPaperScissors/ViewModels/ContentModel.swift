@@ -19,12 +19,13 @@ class ContentModel: ObservableObject {
     @Published var showResult = false
     @Published var showGameFinished = false
     @Published var milliseconds = 3000.0
-    @Published var shuffling = false
     @Published var showStartGame = false
+    @Published var disableButtons = true
     var timer: Timer?
     
     func submittAnswer(optionSelected: Option?) {
         timer?.invalidate()
+        disableButtons = true
         // response is the duration in this animation
         // dampingFraction if 1.0 it doesn't do the bounce
         withAnimation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 1.0)) {
@@ -75,13 +76,12 @@ class ContentModel: ObservableObject {
     
     func shuffleAllOptions() {
         shouldPlayToWin.toggle()
-        shuffling = true
         for i in 0..<10 {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(i)/10) {
                 self.allOptions.shuffle()
                 self.computerSelection = self.allOptions.randomElement() ?? .paper
                 if i == 9 {
-                    self.shuffling = false
+                    self.disableButtons = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         self.fireTimer()
                     }

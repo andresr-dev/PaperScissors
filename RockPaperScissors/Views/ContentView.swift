@@ -169,7 +169,7 @@ extension ContentView {
                         }
                 }
                 .tint(.primary)
-                .disabled(vm.showResult || vm.shuffling || vm.milliseconds == 0)
+                .disabled(vm.disableButtons)
             }
         }
         .padding(.bottom)
