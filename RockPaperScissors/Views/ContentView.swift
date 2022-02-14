@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var vm = ContentModel()
+    let timer = Timer.publish(every: 0.001, on: .main, in: .common).autoconnect()
         
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -34,8 +35,8 @@ struct ContentView: View {
                     .zIndex(1)
                     .transition(.move(edge: .bottom))
             }
-            if vm.showStartGame {
-                StartGameView(vm: vm)
+            if vm.showInitialView {
+                InitialGameView(vm: vm)
                     .zIndex(1)
                     .transition(.asymmetric(
                         insertion: .move(edge: .trailing),
@@ -44,18 +45,8 @@ struct ContentView: View {
             }
         }
         .edgesIgnoringSafeArea(.bottom)
-        .onAppear {
-            vm.showStartGame = true
-        }
-        .onChange(of: vm.milliseconds) { newValue in
-            if newValue == 0 {
-                vm.submittAnswer(optionSelected: nil)
-            }
-        }
-        .alert("Game Finished!", isPresented: $vm.showGameFinished) {
-            Button("Play Again!", action: vm.resetGame)
-        } message: {
-            Text(vm.getAlertMessage())
+        .onReceive(timer) { _ in
+            vm.countdown()
         }
     }
 }
@@ -85,7 +76,7 @@ extension ContentView {
                 .fontWeight(.medium)
                 .foregroundColor(vm.milliseconds == 0 ? .Theme.red : .primary)
                 .frame(width: 40, alignment: .leading)
-                .offset(x: 2, y: 0)
+                .offset(x: 1.5, y: 0)
         }
         .frame(width: 60, height: 30)
     }
@@ -122,7 +113,7 @@ extension ContentView {
     private var divider: some View {
         Capsule()
             .foregroundColor(.primary)
-            .frame(height: 0.8)
+            .frame(height: 0.7)
             .padding()
     }
     
