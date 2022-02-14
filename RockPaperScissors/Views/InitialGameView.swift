@@ -58,7 +58,7 @@ extension InitialGameView {
                 .asImageTemplate()
         } else {
             Text(vm.getResultEmoji())
-                .font(.system(size: 60))
+                .font(.system(size: 55))
         }
     }
     
